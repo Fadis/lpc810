@@ -47,9 +47,11 @@ SECTIONS {
   .ARM.extab : {
     *(.ARM.extab* .gnu.linkonce.armextab.*)
   } > flash
+  __exidx_start = .;
   .ARM.exidx : {
     *(.ARM.exidx* .gnu.linkonce.armexidx.*)
   } > flash
+  __exidx_end = .;
   __etext__ = .;
   .data : AT(__etext__) {
     __data_values__ = LOADADDR(.data);

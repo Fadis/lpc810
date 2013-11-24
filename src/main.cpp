@@ -23,21 +23,23 @@
 #include "LPC8xx.h"
 #include "state_configurable_timer.hpp"
 #include "switch_matrix.hpp"
+#include "mbed.h"
 
 extern uint16_t counter;
 
 int main() {
+//  DigitalOut output( P0_2 );
   switch_matrix matrix;
-  matrix.bind_CTOUT_0_O( 0 );
-  LPC_IOCON->PIO0_0 |= (1<<5);
+  matrix.bind_CTOUT_0_O( 3 );
+  LPC_IOCON->PIO0_3 |= (1<<5);
   LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 8);
   LPC_SCT->CTRL_L |= ((1<<3));
   state_configurable_timer timer;
   LPC_SCT->CTRL_L &= ~(1<<2);
   SysTick_Config(SystemCoreClock/20000 );
-  while(1) {
-/*  LPC_SCT->MATCHREL_L[1] = counter;
-  ++counter;
-  for( int foo = 0; foo != 1000; ++foo );*/
+  LPC_IOCON->PIO0_2 |= (1<<5);
+  for( uint32_t step = 0; ; ++step ) {
+//    output.write( ( step >> 8 ) & 0x1u );
+    for( int foo = 0; foo != 1000; ++foo );
   }
 }
