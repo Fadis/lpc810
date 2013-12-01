@@ -33,27 +33,49 @@ class state_configurable_timer {
       LPC_SCT->MATCHREL_L[0] = 32768;
       LPC_SCT->MATCH_L[1] = 16384;             /* MATCH1 */
       LPC_SCT->MATCHREL_L[1] = 16384;
+      LPC_SCT->MATCH_L[2] = 16384;             /* MATCH2 */
+      LPC_SCT->MATCHREL_L[2] = 16384;
+      LPC_SCT->MATCH_L[3] = 16384;             /* MATCH3 */
+      LPC_SCT->MATCHREL_L[3] = 16384;
+      LPC_SCT->MATCH_L[3] = 16384;             /* MATCH4 */
+      LPC_SCT->MATCHREL_L[3] = 16384;
+      LPC_SCT->MATCH_L[4] = 16384;             /* MATCH5 */
+      LPC_SCT->MATCHREL_L[4] = 16384;
       /* OUTPUT registers */
       LPC_SCT->OUT[0].SET = 0x00000001;        /* Output_pin_0 */
       LPC_SCT->OUT[0].CLR = 0x00000002;
+      LPC_SCT->OUT[1].SET = 0x00000001;        /* Output_pin_1 */
+      LPC_SCT->OUT[1].CLR = 0x00000004;
+      LPC_SCT->OUT[2].SET = 0x00000001;        /* Output_pin_2 */
+      LPC_SCT->OUT[2].CLR = 0x00000008;
+      LPC_SCT->OUT[3].SET = 0x00000001;        /* Output_pin_3 */
+      LPC_SCT->OUT[3].CLR = 0x00000010;
       /* Unused outputs must not be affected by any event */
-      LPC_SCT->OUT[1].SET = 0;
-      LPC_SCT->OUT[1].CLR = 0;
-      LPC_SCT->OUT[2].SET = 0;
-      LPC_SCT->OUT[2].CLR = 0;
-      LPC_SCT->OUT[3].SET = 0;
-      LPC_SCT->OUT[3].CLR = 0;
+      //LPC_SCT->OUT[1].SET = 0;
+      //LPC_SCT->OUT[1].CLR = 0;
+      //LPC_SCT->OUT[2].SET = 0;
+      //LPC_SCT->OUT[2].CLR = 0;
+      //LPC_SCT->OUT[3].SET = 0;
+      //LPC_SCT->OUT[3].CLR = 0;
       /* Conflict resolution register */
       /* EVENT registers */
       LPC_SCT->EVENT[0].CTRL = 0x00005000;     /* L: --> state L_ENTRY */
       LPC_SCT->EVENT[0].STATE = 0x00000001;
       LPC_SCT->EVENT[1].CTRL = 0x00005001;     /* L: --> state L_ENTRY */
       LPC_SCT->EVENT[1].STATE = 0x00000001;
+      LPC_SCT->EVENT[2].CTRL = 0x00005002;     /* L: --> state L_ENTRY */
+      LPC_SCT->EVENT[2].STATE = 0x00000001;
+      LPC_SCT->EVENT[3].CTRL = 0x00005003;     /* L: --> state L_ENTRY */
+      LPC_SCT->EVENT[3].STATE = 0x00000001;
+      LPC_SCT->EVENT[4].CTRL = 0x00005004;     /* L: --> state L_ENTRY */
+      LPC_SCT->EVENT[4].STATE = 0x00000001;
+      LPC_SCT->EVENT[5].CTRL = 0x00005001;     /* L: --> state L_ENTRY */
+      LPC_SCT->EVENT[5].STATE = 0x00000001;
       /* Unused events must not have any effect */
-      LPC_SCT->EVENT[2].STATE = 0;
-      LPC_SCT->EVENT[3].STATE = 0;
-      LPC_SCT->EVENT[4].STATE = 0;
-      LPC_SCT->EVENT[5].STATE = 0;
+      //LPC_SCT->EVENT[2].STATE = 0;
+      //LPC_SCT->EVENT[3].STATE = 0;
+      //LPC_SCT->EVENT[4].STATE = 0;
+      //LPC_SCT->EVENT[5].STATE = 0;
       /* STATE registers */
       LPC_SCT->STATE_L = 0;
       LPC_SCT->STATE_H = 0; /* implicit value */

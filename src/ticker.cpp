@@ -29,5 +29,7 @@ __attribute__((interrupt("IRQ")))
 void SysTick_Handler(void) {
   ++counter;
   LPC_SCT->MATCHREL_L[1]=counter&0x7FFF;
+  LPC_SCT->MATCHREL_L[2]=( counter + 10922 )&0x7FFF;
+  LPC_SCT->MATCHREL_L[3]=( ( counter + 10922 * 2 )&0x7FFF ) / 4;
 }
 
